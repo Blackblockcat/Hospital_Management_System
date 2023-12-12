@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="581d786c4e82410fb17839025f967b92" Name="Diagram1">
+        <EntityTypeShape EntityType="HSMModel.APPOINTMENT" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.BILL" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.DEPARTMENT" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.DOCTOR" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.EMPLOYEE" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.MEDICAL_EXAMINATIONS" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.MEDICAL_EXAMINATIONS_TYPES" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.PATIENT" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.PHARMACY" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.PHARMACY_BILL" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="HSMModel.FK__APPOINTME__ID_De__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__APPOINTME__ID_Pa__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__BILL__Appointmen__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__BILL__ID_Patient__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__BILL__ME_ID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__DOCTOR__ID_Dep__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__MEDICAL_E__ID_Pa__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__MEDICAL_E__MeTyp__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__PHARMACY___ID_Pa__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__PHARMACY___Medic__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,93 @@
+﻿<Window x:Class="HSM.registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:uc="clr-namespace:HSM.Control"
+        mc:Ignorable="d"
+        Height="700" Width="1300"
+        Background="Transparent" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--Left Section-->
+        <Border Background="#3AA9AD" Padding="30" CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="D:\google_dw\_00321075-e172-4551-b0c3-11b7b1235345-removebg-preview.png" Width="160" Height="160" Margin="0 0 0 40" />
+                <TextBlock Text="Sign Up" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
+                <TextBlock TextWrapping="Wrap" FontSize="18" TextAlignment="Center" Foreground="#363636" Margin="0 20 0 20" Text="Already have an account?"/>
+                <Button Style="{StaticResource buttonBlack}" Click="Button_Click_1">
+                    <fa:ImageAwesome Icon="AngleRight" Width="25" Height="25" Foreground="#3AA9AD" Margin="3 0 0 0"/>
+                </Button>
+                <Canvas>
+                    <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6" Canvas.Left="-30" Canvas.Top="-536" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.514,1.098"/>
+                    <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6" HorizontalAlignment="Left" Canvas.Top="-335" VerticalAlignment="Top" Canvas.Left="-55"/>
+                    <Ellipse Width="40" Height="40" Fill="#4EB1B6" Canvas.Left="235" Canvas.Top="47"/>
+                    <Ellipse Width="20" Height="20" Fill="#4EB1B6" RenderTransformOrigin="0.5,0.5" Canvas.Left="35" Canvas.Top="-3">
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="15.881"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                </Canvas>
+            </StackPanel>
+
+
+        </Border>
+        <!--Input Section-->
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Full Name" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="1" Text="ID" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="2" Text="Age" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="3" Text="Gender" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="4" Text="Town" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="5" Text="Address" Style="{StaticResource text}"/>
+                    <TextBlock Grid.Row="6" Text="Phone Number" Style="{StaticResource text}"/>
+                    <!--hint-->
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="0" Hint="Patient Name"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="1" Hint="Patient ID"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Hint="in years"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="4" Hint="Patient Town/City"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="5" Hint="Patient full address"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="6" Hint="ex:777-888-1111"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" Margin="0 10">
+                        <uc:MyOption Icon="Male" Text="Male"/>
+                        <uc:MyOption Icon="Female" Text="Female"/>
+                    </StackPanel>
+                    <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Cancel" Margin="0,0,10,0" Style="{StaticResource buttonMain}" Click="Button_Click"/>
+                        <Button Content="Save" Margin="10 0 0 0" Grid.Column="1" Style="{StaticResource buttonMainGreen}"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
