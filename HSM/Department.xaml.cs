@@ -23,113 +23,119 @@ namespace HSM
         {
             InitializeComponent();
         }
+        HSMEntities db= new HSMEntities();
+        APPOINTMENT app = new APPOINTMENT();
+        static int Capacity = 10;
+        private void HandleDepartment(int dep_ID)
+        {
 
+            var checkout = db.APPOINTMENTs.Count(check => check.ID_Dep == dep_ID && check.p_turn == false);
+
+            if (checkout < Capacity)
+            {
+               app.p_turn = false;
+               app.ID_Dep = dep_ID;
+                app.ID_Patient = 123456789;  // Assign an existing patient ID to M.ID_Patient before adding
+                app.app_date = new DateTime(2022, 6, 8);
+
+                db.APPOINTMENTs.Add(app);
+                db.SaveChanges();
+                registrationDepartment r = new registrationDepartment();
+                Hide();
+                r.Show();
+            }
+
+
+        }
         private void Pediatrics_Click(object sender, RoutedEventArgs e)
         {
-            registration r=new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(5);
+
         }
 
         private void Emergency_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(1);
         }
 
         private void Cardiology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(2);
+
         }
 
         private void Gastroenterology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(4);
+
         }
 
         private void Gynecology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(6);
+
         }
 
         private void Hematology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(7);
+
         }
 
         private void Oncology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(8);
+
         }
 
         private void Ophthalmology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(10);
+
         }
 
         private void Neurology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(9);
+
         }
 
         private void Orthopedic_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(11);
+
         }
 
         private void Urology_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(12);
+
         }
 
         private void Dental_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(13);
+
         }
 
         private void Nutrition_and_Dietetics_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(15);
+
         }
 
         private void Respiratory_Therapy_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(14);
+
         }
 
         private void ENT_Click(object sender, RoutedEventArgs e)
         {
-            registration r = new registration();
-            this.Hide();
-            r.Show();
+            HandleDepartment(3);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             HomePage page = new HomePage();
             this.Hide();

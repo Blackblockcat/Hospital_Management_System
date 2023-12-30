@@ -22,13 +22,13 @@ namespace HSM
     
         public int ME_ID { get; set; }
         public Nullable<int> MeType { get; set; }
-        public string Result { get; set; }
         public Nullable<System.DateTime> ME_DATE { get; set; }
         public Nullable<int> ID_Patient { get; set; }
+        public Nullable<int> P_OUT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BILL> BILLs { get; set; }
+        public virtual MEDICAL_EXAMINATIONS_TYPE MEDICAL_EXAMINATIONS_TYPE { get; set; }
         public virtual PATIENT PATIENT { get; set; }
-        public virtual MEDICAL_EXAMINATIONS_TYPES MEDICAL_EXAMINATIONS_TYPES { get; set; }
     }
 }

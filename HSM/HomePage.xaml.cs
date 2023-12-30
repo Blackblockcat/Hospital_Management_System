@@ -24,26 +24,59 @@ namespace HSM
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+ 
+
+        private void logout_Click(object sender, RoutedEventArgs e)
         {
             MainWindow p= new MainWindow();
             this.Hide();
             p.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void appointment_Click(object sender, RoutedEventArgs e)
         {
-            
-            Department p= new Department();
+            Department p = new Department();
             this.Hide();
             p.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void examination_Click(object sender, RoutedEventArgs e)
         {
-            Medical_Examination p= new Medical_Examination();
+            Medical_Examination p = new Medical_Examination();
             this.Hide();
             p.Show();
+        }
+
+        private void patient_Click(object sender, RoutedEventArgs e)
+        {
+            Patient p = new Patient();
+            this.Hide();
+            p.Show();
+        }
+
+        private void staff_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Beep();
+            }
+            this.Hide();
+            Stafflock stafflock = new Stafflock();
+            stafflock.Show();
+           
+        }
+
+        private void payment_Click(object sender, RoutedEventArgs e)
+        {
+            BILL bILL = new BILL();
+            this.Hide();
+            bILL.Show();
+        }
+
+        private void pharmacy_Click(object sender, RoutedEventArgs e)
+        {
+            Pharmacy p= new Pharmacy();
+            this.Hide(); p.Show();
         }
     }
 }

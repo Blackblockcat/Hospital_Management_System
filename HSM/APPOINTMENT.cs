@@ -14,20 +14,13 @@ namespace HSM
     
     public partial class APPOINTMENT
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public APPOINTMENT()
-        {
-            this.BILLs = new HashSet<BILL>();
-        }
-    
         public int Appointment_id { get; set; }
-        public Nullable<int> ID_Patient { get; set; }
-        public Nullable<int> ID_Dep { get; set; }
-        public Nullable<System.DateTime> app_date { get; set; }
+        public int ID_Patient { get; set; }
+        public int ID_Dep { get; set; }
+        public System.DateTime app_date { get; set; }
+        public bool p_turn { get; set; }
     
         public virtual DEPARTMENT DEPARTMENT { get; set; }
         public virtual PATIENT PATIENT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BILL> BILLs { get; set; }
     }
 }

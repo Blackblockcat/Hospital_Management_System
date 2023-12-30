@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSM", "HSM\HSM.csproj", "{BE528BD4-CB3F-4AE1-A9EF-4B30F6BE4627}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE528BD4-CB3F-4AE1-A9EF-4B30F6BE4627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE528BD4-CB3F-4AE1-A9EF-4B30F6BE4627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE528BD4-CB3F-4AE1-A9EF-4B30F6BE4627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE528BD4-CB3F-4AE1-A9EF-4B30F6BE4627}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8C6934E-DFBA-4164-BB7B-319CF705BE51}
+	EndGlobalSection
+EndGlobal

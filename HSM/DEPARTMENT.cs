@@ -18,17 +18,14 @@ namespace HSM
         public DEPARTMENT()
         {
             this.APPOINTMENTs = new HashSet<APPOINTMENT>();
-            this.DOCTORs = new HashSet<DOCTOR>();
         }
     
         public int ID_Dep { get; set; }
         public string NAME_DEP { get; set; }
-        public Nullable<double> Price_Dep { get; set; }
-        public Nullable<int> No_Of_Room { get; set; }
+        public double Price_Dep { get; set; }
+        public int No_Of_Room { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<APPOINTMENT> APPOINTMENTs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DOCTOR> DOCTORs { get; set; }
     }
 }

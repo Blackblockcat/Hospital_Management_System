@@ -16,7 +16,5 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/font-awesome.css")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("content/font-awesome.min.css")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/fontawesome-webfont.svg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.tt")]
 
 

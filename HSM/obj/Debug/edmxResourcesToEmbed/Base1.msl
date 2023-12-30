@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HSMBaseModelStoreContainer" CdmEntityContainer="HSMBaseEntities">
+    <EntitySetMapping Name="APPOINTMENTs">
+      <EntityTypeMapping TypeName="HSMBaseModel.APPOINTMENT">
+        <MappingFragment StoreEntitySet="APPOINTMENT">
+          <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+          <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
+          <ScalarProperty Name="ID_Dep" ColumnName="ID_Dep" />
+          <ScalarProperty Name="app_date" ColumnName="app_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILLs">
+      <EntityTypeMapping TypeName="HSMBaseModel.BILL">
+        <MappingFragment StoreEntitySet="BILL">
+          <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+          <ScalarProperty Name="ME_ID" ColumnName="ME_ID" />
+          <ScalarProperty Name="ME_Price" ColumnName="ME_Price" />
+          <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+          <ScalarProperty Name="Appointment_Price" ColumnName="Appointment_Price" />
+          <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
+          <ScalarProperty Name="Pay_Method" ColumnName="Pay_Method" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTs">
+      <EntityTypeMapping TypeName="HSMBaseModel.DEPARTMENT">
+        <MappingFragment StoreEntitySet="DEPARTMENT">
+          <ScalarProperty Name="ID_Dep" ColumnName="ID_Dep" />
+          <ScalarProperty Name="NAME_DEP" ColumnName="NAME_DEP" />
+          <ScalarProperty Name="Price_Dep" ColumnName="Price_Dep" />
+          <ScalarProperty Name="No_Of_Room" ColumnName="No_Of_Room" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOCTORs">
+      <EntityTypeMapping TypeName="HSMBaseModel.DOCTOR">
+        <MappingFragment StoreEntitySet="DOCTOR">
+          <ScalarProperty Name="ID_Doc" ColumnName="ID_Doc" />
+          <ScalarProperty Name="DOC_Name" ColumnName="DOC_Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ID_Dep" ColumnName="ID_Dep" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEEs">
+      <EntityTypeMapping TypeName="HSMBaseModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDICAL_EXAMINATIONS">
+      <EntityTypeMapping TypeName="HSMBaseModel.MEDICAL_EXAMINATIONS">
+        <MappingFragment StoreEntitySet="MEDICAL_EXAMINATIONS">
+          <ScalarProperty Name="ME_ID" ColumnName="ME_ID" />
+          <ScalarProperty Name="MeType" ColumnName="MeType" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="ME_DATE" ColumnName="ME_DATE" />
+          <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDICAL_EXAMINATIONS_TYPES">
+      <EntityTypeMapping TypeName="HSMBaseModel.MEDICAL_EXAMINATIONS_TYPES">
+        <MappingFragment StoreEntitySet="MEDICAL_EXAMINATIONS_TYPES">
+          <ScalarProperty Name="MeType_ID" ColumnName="MeType_ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Type_Price" ColumnName="Type_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATIENTs">
+      <EntityTypeMapping TypeName="HSMBaseModel.PATIENT">
+        <MappingFragment StoreEntitySet="PATIENT">
+          <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
+          <ScalarProperty Name="name_patient" ColumnName="name_patient" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="AddressS" ColumnName="AddressS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHARMACies">
+      <EntityTypeMapping TypeName="HSMBaseModel.PHARMACY">
+        <MappingFragment StoreEntitySet="PHARMACY">
+          <ScalarProperty Name="Medicine_Code" ColumnName="Medicine_Code" />
+          <ScalarProperty Name="MEDICENE_name" ColumnName="MEDICENE_name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

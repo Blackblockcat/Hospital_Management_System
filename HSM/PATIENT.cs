@@ -20,12 +20,12 @@ namespace HSM
             this.APPOINTMENTs = new HashSet<APPOINTMENT>();
             this.BILLs = new HashSet<BILL>();
             this.MEDICAL_EXAMINATIONS = new HashSet<MEDICAL_EXAMINATIONS>();
-            this.PHARMACY_BILL = new HashSet<PHARMACY_BILL>();
+            this.Pharmacy_Bill = new HashSet<Pharmacy_Bill>();
         }
     
         public int ID_Patient { get; set; }
         public string name_patient { get; set; }
-        public Nullable<int> Age { get; set; }
+        public int Age { get; set; }
         public string Gender { get; set; }
         public string Town { get; set; }
         public string AddressS { get; set; }
@@ -38,6 +38,6 @@ namespace HSM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEDICAL_EXAMINATIONS> MEDICAL_EXAMINATIONS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHARMACY_BILL> PHARMACY_BILL { get; set; }
+        public virtual ICollection<Pharmacy_Bill> Pharmacy_Bill { get; set; }
     }
 }

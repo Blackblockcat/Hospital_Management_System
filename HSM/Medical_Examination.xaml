@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HSM"
-        mc:Ignorable="d" Title="Medical Examination" AllowsTransparency="True" Background="Transparent" WindowStyle="None"
+        mc:Ignorable="d" Title="Medical Examination" AllowsTransparency="True" Background="Transparent" WindowStyle="None" 
  
         Height="700" Width="1300" WindowStartupLocation="CenterScreen">
 
@@ -43,7 +43,7 @@
                         <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6"/>
                     </Canvas>
                     <Image Source="/_00321075-e172-4551-b0c3-11b7b1235345-removebg-preview.png" Margin="-1,98,-49,-264"  Grid.ColumnSpan="6" />
-                    <Button Content="Cancel" Margin="70,519,18,-489" Style="{StaticResource buttonMain}" Click="Button_Click" Grid.ColumnSpan="5"/>
+                    <Button x:Name="cancel1" Content="Cancel" Margin="70,519,18,-489" Style="{StaticResource buttonMain}" Grid.ColumnSpan="5" Click="cancel1_Click" />
                     <TextBlock Text="Medical Examinations" Foreground="#363636" FontSize="26" FontWeight="SemiBold" Margin="-7,-10,-55,10" Style="{StaticResource titleText}" Grid.ColumnSpan="6"/>
                     <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="5" Margin="24,0,0,0" Height="0" Width="0">
                     </Grid>
@@ -56,26 +56,28 @@
                 </Grid.RowDefinitions>
                 <StackPanel Margin="53,0,0,14">
                     <ListView Height="732" Width="939" RenderTransformOrigin="0.503,0.486">
-                        <Button x:Name="BloodCell" Content="Blood Cell" FontSize="24" Width="911" Height="70" FontFamily="Cascadia Mono SemiBold" Cursor="Hand"  Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="X_ray"  Content="X-ray" FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" />
-                        <Button x:Name="Ultrasound" Content="Ultrasound" FontSize="24"  Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="MRI_Scan" Content="MRI Scan" FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" />
-                        <Button x:Name="EKG" Content="EKG"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Colonoscopy" Content="Colonoscopy"  FontSize="24"  Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Pap_Smear" Content="Pap Smear"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Click="Pap_Smear_Click" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Bone_Density_Scan" Content="Bone Density Scan"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="CT_Scan" Content="CT Scan"   FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Dental_Check_up" Content="Dental Check-up"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Allergy_Test" Content="Allergy Test"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Endoscopy" Content="Endoscopy"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Eye_Exam" Content="Eye Exam" Width="911"  FontSize="24" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Cardiac_Stress_Test" Content="Cardiac Stress Test"  FontSize="24" Width="911" Height="70" FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Pregnancy_Ultrasound" Content="Pregnancy Ultrasound"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="DEXA_Scan" Content="DEXA Scan"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Spirometry" Content="Spirometry"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Dermatological_Exam" Content="Dermatological Exam"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Colon_Cancer_Screening" Content="Colon Cancer Screening"  FontSize="25" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
-                        <Button x:Name="Hearing_Test" Content="Hearing Test"  FontSize="25" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold"  Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF"/>
+                        <Button x:Name="BloodCell" Content="Blood Cell" FontSize="24" Width="911" Height="70" FontFamily="Cascadia Mono SemiBold" Cursor="Hand"  Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="BloodCell_Click"/>
+                        <Button x:Name="X_ray"  Content="X-ray" FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="X_ray_Click" />
+                        <Button x:Name="Ultrasound" Content="Ultrasound" FontSize="24"  Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Ultrasound_Click"/>
+                        <Button x:Name="MRI_Scan" Content="MRI Scan" FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="MRI_Scan_Click"/>
+                        <Button x:Name="EKG" Content="EKG"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="EKG_Click"/>
+                        <Button x:Name="Colonoscopy" Content="Colonoscopy"  FontSize="24"  Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Colonoscopy_Click"/>
+                        <Button x:Name="Pap_Smear" Content="Pap Smear"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Click="Pap_Smear_Click" Style="{StaticResource mainbutton}" Background="#FF1E90FF" />
+                        <Button x:Name="Bone_Density_Scan" Content="Bone Density Scan"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Bone_Density_Scan_Click"/>
+                        <Button x:Name="CT_Scan" Content="CT Scan"   FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="CT_Scan_Click"/>
+                        <Button x:Name="Dental_Check_up" Content="Dental Check-up"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Dental_Check_up_Click"/>
+                        <Button x:Name="Allergy_Test" Content="Allergy Test"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Allergy_Test_Click"/>
+                        <Button x:Name="Endoscopy" Content="Endoscopy"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Endoscopy_Click"/>
+                        <Button x:Name="Pulmonary_Function_Test" Content="Pulmonary Function Test"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Pulmonary_Function_Test_Click"/>
+
+                        <Button x:Name="Eye_Exam" Content="Eye Exam" Width="911"  FontSize="24" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Eye_Exam_Click"/>
+                        <Button x:Name="Cardiac_Stress_Test" Content="Cardiac Stress Test"  FontSize="24" Width="911" Height="70" FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Cardiac_Stress_Test_Click"/>
+                        <Button x:Name="Pregnancy_Ultrasound" Content="Pregnancy Ultrasound"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Pregnancy_Ultrasound_Click"/>
+                        <Button x:Name="DEXA_Scan" Content="DEXA Scan"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="DEXA_Scan_Click"/>
+                        <Button x:Name="Spirometry" Content="Spirometry"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Spirometry_Click"/>
+                        <Button x:Name="Dermatological_Exam" Content="Dermatological Exam"  FontSize="24" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Dermatological_Exam_Click"/>
+                        <Button x:Name="Colon_Cancer_Screening" Content="Colon Cancer Screening"  FontSize="25" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold" Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Colon_Cancer_Screening_Click"/>
+                        <Button x:Name="Hearing_Test" Content="Hearing Test"  FontSize="25" Width="911" Height="70"  FontFamily="Cascadia Mono SemiBold"  Cursor="Hand" Style="{StaticResource mainbutton}" Background="#FF1E90FF" Click="Hearing_Test_Click"/>
                     </ListView>
                 </StackPanel>
             </Grid>

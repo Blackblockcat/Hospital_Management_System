@@ -11,9 +11,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-       
 
-        <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.tt#FontAwesome</FontFamily>
+
+            <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.tt#FontAwesome</FontFamily>
         <Style x:Key="titleText" TargetType="TextBlock">
             <Setter Property="FontSize" Value="50"/>
             <Setter Property="FontWeight" Value="Bold"/>

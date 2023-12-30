@@ -99,14 +99,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHARMACY_BILL">
-      <EntityTypeMapping TypeName="HSMModel.PHARMACY_BILL">
-        <MappingFragment StoreEntitySet="PHARMACY_BILL">
-          <ScalarProperty Name="PH_Bill_ID" ColumnName="PH_Bill_ID" />
-          <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
-          <ScalarProperty Name="Medicine_Code" ColumnName="Medicine_Code" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

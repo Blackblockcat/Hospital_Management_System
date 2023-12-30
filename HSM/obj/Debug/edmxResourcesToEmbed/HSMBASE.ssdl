@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HSMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="APPOINTMENT">
+    <Key>
+      <PropertyRef Name="Appointment_id" />
+    </Key>
+    <Property Name="Appointment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Patient" Type="int" Nullable="false" />
+    <Property Name="ID_Dep" Type="int" Nullable="false" />
+    <Property Name="app_date" Type="date" Nullable="false" />
+    <Property Name="p_turn" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILL_ID" />
+    </Key>
+    <Property Name="BILL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ME_ID" Type="int" />
+    <Property Name="ME_Price" Type="float" />
+    <Property Name="Appointment_id" Type="int" />
+    <Property Name="Appointment_Price" Type="float" />
+    <Property Name="ID_Patient" Type="int" Nullable="false" />
+    <Property Name="Pay_Method" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Payment" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="ID_Dep" />
+    </Key>
+    <Property Name="ID_Dep" Type="int" Nullable="false" />
+    <Property Name="NAME_DEP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Price_Dep" Type="float" Nullable="false" />
+    <Property Name="No_Of_Room" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="employee_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Salary" Type="float" Nullable="false" />
+    <Property Name="Job" Type="text" Nullable="false" />
+    <Property Name="Phone" Type="text" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Town" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="Password" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAMINATIONS">
+    <Key>
+      <PropertyRef Name="ME_ID" />
+    </Key>
+    <Property Name="ME_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeType" Type="int" />
+    <Property Name="ME_DATE" Type="date" />
+    <Property Name="ID_Patient" Type="int" />
+    <Property Name="P_OUT" Type="int" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAMINATIONS_TYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ME_TYPE" Type="text" Nullable="false" />
+    <Property Name="ME_PRICE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PATIENT">
+    <Key>
+      <PropertyRef Name="ID_Patient" />
+    </Key>
+    <Property Name="ID_Patient" Type="int" Nullable="false" />
+    <Property Name="name_patient" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Town" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AddressS" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PHONE" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHARMACY">
+    <Key>
+      <PropertyRef Name="Medicine_Code" />
+    </Key>
+    <Property Name="Medicine_Code" Type="int" Nullable="false" />
+    <Property Name="MEDICENE_name" Type="text" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pharmacy_Bill">
+    <Key>
+      <PropertyRef Name="PH_Bill_ID" />
+    </Key>
+    <Property Name="PH_Bill_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Patient" Type="int" Nullable="false" />
+    <Property Name="Medicine_Code" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__APPOINTME__ID_De__4AB81AF0">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__APPOINTME__ID_Pa__49C3F6B7">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__ID_Patient__6477ECF3">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__ME_ID__628FA481">
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="ME_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="ME_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MEDICAL_EXAMINATIONS_MEDICAL_EXAMINATIONS_TYPE">
+    <End Role="MEDICAL_EXAMINATIONS_TYPE" Type="Self.MEDICAL_EXAMINATIONS_TYPE" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_EXAMINATIONS_TYPE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="MeType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MEDICAL_EXAMINATIONS_PATIENT">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pharmacy_Bill_PATIENT1">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+    <End Role="Pharmacy_Bill" Type="Self.Pharmacy_Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="Pharmacy_Bill">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pharmacy_Bill_PHARMACY">
+    <End Role="PHARMACY" Type="Self.PHARMACY" Multiplicity="1" />
+    <End Role="Pharmacy_Bill" Type="Self.Pharmacy_Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHARMACY">
+        <PropertyRef Name="Medicine_Code" />
+      </Principal>
+      <Dependent Role="Pharmacy_Bill">
+        <PropertyRef Name="Medicine_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HSMModelStoreContainer">
+    <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_EXAMINATIONS" EntityType="Self.MEDICAL_EXAMINATIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_EXAMINATIONS_TYPE" EntityType="Self.MEDICAL_EXAMINATIONS_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHARMACY" EntityType="Self.PHARMACY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pharmacy_Bill" EntityType="Self.Pharmacy_Bill" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__APPOINTME__ID_De__4AB81AF0" Association="Self.FK__APPOINTME__ID_De__4AB81AF0">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__APPOINTME__ID_Pa__49C3F6B7" Association="Self.FK__APPOINTME__ID_Pa__49C3F6B7">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__ID_Patient__6477ECF3" Association="Self.FK__BILL__ID_Patient__6477ECF3">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__ME_ID__628FA481" Association="Self.FK__BILL__ME_ID__628FA481">
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MEDICAL_EXAMINATIONS_MEDICAL_EXAMINATIONS_TYPE" Association="Self.FK_MEDICAL_EXAMINATIONS_MEDICAL_EXAMINATIONS_TYPE">
+      <End Role="MEDICAL_EXAMINATIONS_TYPE" EntitySet="MEDICAL_EXAMINATIONS_TYPE" />
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MEDICAL_EXAMINATIONS_PATIENT" Association="Self.FK_MEDICAL_EXAMINATIONS_PATIENT">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pharmacy_Bill_PATIENT1" Association="Self.FK_Pharmacy_Bill_PATIENT1">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="Pharmacy_Bill" EntitySet="Pharmacy_Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pharmacy_Bill_PHARMACY" Association="Self.FK_Pharmacy_Bill_PHARMACY">
+      <End Role="PHARMACY" EntitySet="PHARMACY" />
+      <End Role="Pharmacy_Bill" EntitySet="Pharmacy_Bill" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

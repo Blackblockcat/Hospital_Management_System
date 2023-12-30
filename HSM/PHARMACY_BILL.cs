@@ -12,11 +12,11 @@ namespace HSM
     using System;
     using System.Collections.Generic;
     
-    public partial class PHARMACY_BILL
+    public partial class Pharmacy_Bill
     {
         public int PH_Bill_ID { get; set; }
-        public Nullable<int> ID_Patient { get; set; }
-        public Nullable<int> Medicine_Code { get; set; }
+        public int ID_Patient { get; set; }
+        public int Medicine_Code { get; set; }
     
         public virtual PATIENT PATIENT { get; set; }
         public virtual PHARMACY PHARMACY { get; set; }

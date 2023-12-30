@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HSMBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="APPOINTMENT">
+    <Key>
+      <PropertyRef Name="Appointment_id" />
+    </Key>
+    <Property Name="Appointment_id" Type="int" Nullable="false" />
+    <Property Name="ID_Patient" Type="int" />
+    <Property Name="ID_Dep" Type="int" />
+    <Property Name="app_date" Type="date" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILL_ID" />
+    </Key>
+    <Property Name="BILL_ID" Type="int" Nullable="false" />
+    <Property Name="ME_ID" Type="int" />
+    <Property Name="ME_Price" Type="float" />
+    <Property Name="Appointment_id" Type="int" />
+    <Property Name="Appointment_Price" Type="float" />
+    <Property Name="ID_Patient" Type="int" />
+    <Property Name="Pay_Method" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="ID_Dep" />
+    </Key>
+    <Property Name="ID_Dep" Type="int" Nullable="false" />
+    <Property Name="NAME_DEP" Type="varchar" MaxLength="30" />
+    <Property Name="Price_Dep" Type="float" />
+    <Property Name="No_Of_Room" Type="int" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="ID_Doc" />
+    </Key>
+    <Property Name="ID_Doc" Type="int" Nullable="false" />
+    <Property Name="DOC_Name" Type="varchar" MaxLength="30" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="ID_Dep" Type="int" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="employee_name" Type="nvarchar(max)" />
+    <Property Name="Salary" Type="float" />
+    <Property Name="Job" Type="text" />
+    <Property Name="Phone" Type="text" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAMINATIONS">
+    <Key>
+      <PropertyRef Name="ME_ID" />
+    </Key>
+    <Property Name="ME_ID" Type="int" Nullable="false" />
+    <Property Name="MeType" Type="int" />
+    <Property Name="Result" Type="text" />
+    <Property Name="ME_DATE" Type="date" />
+    <Property Name="ID_Patient" Type="int" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAMINATIONS_TYPES">
+    <Key>
+      <PropertyRef Name="MeType_ID" />
+    </Key>
+    <Property Name="MeType_ID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="text" Nullable="false" />
+    <Property Name="Type_Price" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HSMBase.dbo.PATIEN_DOC_INFO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PATIEN_DOC_INFO">
+          <Property Name="ID_Patient" Type="int" />
+          <Property Name="ID_DOCTOR" Type="int" />
+        </EntityType>-->
+  <EntityType Name="PATIENT">
+    <Key>
+      <PropertyRef Name="ID_Patient" />
+    </Key>
+    <Property Name="ID_Patient" Type="int" Nullable="false" />
+    <Property Name="name_patient" Type="varchar" MaxLength="20" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Town" Type="varchar" MaxLength="20" />
+    <Property Name="AddressS" Type="varchar" MaxLength="20" />
+    <Property Name="PHONE" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PHARMACY">
+    <Key>
+      <PropertyRef Name="Medicine_Code" />
+    </Key>
+    <Property Name="Medicine_Code" Type="int" Nullable="false" />
+    <Property Name="MEDICENE_name" Type="text" />
+    <Property Name="Price" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HSMBase.dbo.PHARMACY_BILL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PHARMACY_BILL">
+          <Property Name="PH_Bill_ID" Type="int" />
+          <Property Name="ID_Patient" Type="int" />
+          <Property Name="Medicine_Code" Type="int" />
+        </EntityType>-->
+  <Association Name="FK__APPOINTME__ID_De__4AB81AF0">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__APPOINTME__ID_Pa__49C3F6B7">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__Appointmen__6383C8BA">
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPOINTMENT">
+        <PropertyRef Name="Appointment_id" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="Appointment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__ID_Patient__6477ECF3">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__ME_ID__628FA481">
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="ME_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="ME_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DOCTOR__ID_Dep__412EB0B6">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="ID_Dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEDICAL_E__ID_Pa__3C69FB99">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEDICAL_E__MeTyp__3B75D760">
+    <End Role="MEDICAL_EXAMINATIONS_TYPES" Type="Self.MEDICAL_EXAMINATIONS_TYPES" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_EXAMINATIONS_TYPES">
+        <PropertyRef Name="MeType_ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="MeType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'HSMBase.dbo.PATIEN_DOC_INFO' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__PATIEN_DO__ID_DO__5441852A" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'HSMBase.dbo.PATIEN_DOC_INFO' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__PATIEN_DO__ID_Pa__534D60F1" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'HSMBase.dbo.PHARMACY_BILL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__PHARMACY___ID_Pa__5CD6CB2B" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'HSMBase.dbo.PHARMACY_BILL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__PHARMACY___Medic__5DCAEF64" />-->
+  <EntityContainer Name="HSMBaseModelStoreContainer">
+    <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_EXAMINATIONS" EntityType="Self.MEDICAL_EXAMINATIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEDICAL_EXAMINATIONS_TYPES" EntityType="Self.MEDICAL_EXAMINATIONS_TYPES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHARMACY" EntityType="Self.PHARMACY" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__APPOINTME__ID_De__4AB81AF0" Association="Self.FK__APPOINTME__ID_De__4AB81AF0">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__APPOINTME__ID_Pa__49C3F6B7" Association="Self.FK__APPOINTME__ID_Pa__49C3F6B7">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__Appointmen__6383C8BA" Association="Self.FK__BILL__Appointmen__6383C8BA">
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__ID_Patient__6477ECF3" Association="Self.FK__BILL__ID_Patient__6477ECF3">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__ME_ID__628FA481" Association="Self.FK__BILL__ME_ID__628FA481">
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DOCTOR__ID_Dep__412EB0B6" Association="Self.FK__DOCTOR__ID_Dep__412EB0B6">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEDICAL_E__ID_Pa__3C69FB99" Association="Self.FK__MEDICAL_E__ID_Pa__3C69FB99">
+      <End Role="PATIENT" EntitySet="PATIENT" />
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEDICAL_E__MeTyp__3B75D760" Association="Self.FK__MEDICAL_E__MeTyp__3B75D760">
+      <End Role="MEDICAL_EXAMINATIONS_TYPES" EntitySet="MEDICAL_EXAMINATIONS_TYPES" />
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

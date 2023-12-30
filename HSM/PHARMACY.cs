@@ -17,14 +17,14 @@ namespace HSM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHARMACY()
         {
-            this.PHARMACY_BILL = new HashSet<PHARMACY_BILL>();
+            this.Pharmacy_Bill = new HashSet<Pharmacy_Bill>();
         }
     
         public int Medicine_Code { get; set; }
         public string MEDICENE_name { get; set; }
-        public Nullable<double> Price { get; set; }
+        public double Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHARMACY_BILL> PHARMACY_BILL { get; set; }
+        public virtual ICollection<Pharmacy_Bill> Pharmacy_Bill { get; set; }
     }
 }

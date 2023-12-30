@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HSM"
-        mc:Ignorable="d" WindowStyle="None" 
+        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
          Height="700" Width="1300">
     <Grid>
         <Grid.RowDefinitions>
@@ -199,7 +199,7 @@
                     </LinearGradientBrush>
 
                 </Border.Background>
-                <Button Content="Cancel" Margin="20,0,1100,0" Style="{StaticResource buttonMain}" Click="Button_Click_1" />
+                <Button x:Name="Cancel" Content="Cancel" Margin="20,0,1100,0" Style="{StaticResource buttonMain}" Click="Cancel_Click"  />
 
             </Border>
             <Border

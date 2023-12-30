@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf5934f9e16f4781b2a6346afa3819c7" Name="Diagram1">
+        <EntityTypeShape EntityType="HSMModel.APPOINTMENT" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.BILL" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.DEPARTMENT" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.EMPLOYEE" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.MEDICAL_EXAMINATIONS" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.MEDICAL_EXAMINATIONS_TYPE" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.PATIENT" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.PHARMACY" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HSMModel.Pharmacy_Bill" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="HSMModel.FK__APPOINTME__ID_De__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__APPOINTME__ID_Pa__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__BILL__ID_Patient__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK__BILL__ME_ID__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK_MEDICAL_EXAMINATIONS_MEDICAL_EXAMINATIONS_TYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK_MEDICAL_EXAMINATIONS_PATIENT" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK_Pharmacy_Bill_PATIENT1" ManuallyRouted="false" />
+        <AssociationConnector Association="HSMModel.FK_Pharmacy_Bill_PHARMACY" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

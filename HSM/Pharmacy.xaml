@@ -1,0 +1,126 @@
+﻿<Window x:Class="HSM.Pharmacy"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:materialDesgin="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:HSM.Control"
+        
+        mc:Ignorable="d" WindowStyle="None"
+        Title="MainWindow" Height="700" Width="1300">
+    <Border Background="White" CornerRadius="10">
+        <Grid RenderTransformOrigin="0.439,0.511">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0*"/>
+                <RowDefinition Height="227*"/>
+                <RowDefinition Height="123*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border CornerRadius="10 0 0 10" Grid.RowSpan="3" Margin="-10,0,10,0">
+                <Border.Background>
+
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#3AA9AD"/>
+                        <GradientStop Color="#3AA9AD" Offset="1"/>
+                        <GradientStop Color="#FF3AA9AD" Offset="0.057"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Canvas>
+                    <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6" Canvas.Top="85" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.514,1.098" Height="266"/>
+                    <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6" HorizontalAlignment="Left" Canvas.Top="88" VerticalAlignment="Top" Canvas.Left="-14"/>
+                    <Ellipse Width="40" Height="40" Fill="#4EB1B6" Canvas.Left="105" Canvas.Top="355"/>
+                    <Ellipse Width="20" Height="20" Fill="#4EB1B6" RenderTransformOrigin="0.5,0.5" Canvas.Left="57" Canvas.Top="534" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Ellipse.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="15.881"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                </Canvas>
+            </Border>
+
+
+            <ComboBox Name="comboBox" ItemsSource="{Binding  }" 
+                      DisplayMemberPath="MEDICENE_name" 
+                      SelectedItem="{Binding SelectedComboBoxItem}"
+                      HorizontalAlignment="Left" Text="Select Medicine"
+                      Margin="26,267,0,0" VerticalAlignment="Top" Width="186" 
+                      Height="27" Opacity="0.995" FontFamily="Arial" 
+                      FontSize="16" IsEditable="True" Grid.RowSpan="2"
+                      >
+                <ComboBox.Background >
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFF4DEDE" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+
+            <Button Name="Add" BorderThickness="0" Content="Add to list" Foreground="White"
+                     HorizontalAlignment="Left" Margin="120,377,0,0" VerticalAlignment="Top"
+                     RenderTransformOrigin="0.077,2.262" FontSize="15"
+                     Height="53" Width="102" Background="#FF3AB19B"
+                     FontFamily="Arial"
+                     Grid.RowSpan="2"  Grid.Column="1" Click="Add_Click" >
+
+            </Button>
+            <uc:MyTextBox x:Name="Pname"  Grid.Row="0" Hint="Patient Name" Margin="165,-4,748,255" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                <uc:MyTextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="0.728"/>
+                        <RotateTransform Angle="-0.69"/>
+                        <TranslateTransform Y="0.787"/>
+                    </TransformGroup>
+                </uc:MyTextBox.RenderTransform>
+            </uc:MyTextBox>
+            <uc:MyTextBox x:Name="userid" Grid.Row="0" Hint="Patient Name" Margin="425,-4,488,255" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1" >
+                <uc:MyTextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="0.728"/>
+                        <RotateTransform Angle="-0.69"/>
+                        <TranslateTransform Y="0.787"/>
+                    </TransformGroup>
+                </uc:MyTextBox.RenderTransform>
+            </uc:MyTextBox>
+
+
+
+
+
+
+
+            <Grid Grid.Row="1" RenderTransformOrigin="0.581,0.473" Margin="12,120,24,25" Grid.RowSpan="2"/>
+            <TextBox Name ="search" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="54,288,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="Search Here" VerticalAlignment="Top" Width="234"/>
+            <DataGrid  
+x:Name="membersDataGrid" Style="{Binding DataGridStyle1}" 
+AutoGenerateColumns="False" Margin="365,213,34,91" Grid.Row="1"  Grid.Column="1" Grid.RowSpan="2">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="                     Code" Binding="{Binding Medicine_Code}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="                     Name" Binding="{Binding MEDICENE_name}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="                     Price" Binding="{Binding Price}" IsReadOnly="True" Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Text="Full Name" Style="{StaticResource text}" Margin="67,86,879,0" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2" Grid.Column="1" Height="23"/>
+            <TextBlock Text="ID" Style="{StaticResource text}" Margin="385,87,635,0" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2" Grid.Column="1" Height="22"/>
+            <Image Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="684,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100" Source="D:\google_dw\dbad4b9a-d5c8-4621-a31a-a0476f6edbfe.jpg"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="764,31,0,0" Grid.RowSpan="2" TextWrapping="Wrap" Text="Pharmacy" VerticalAlignment="Top" Style="{StaticResource titleText}" Foreground="#363636"/>
+            <Image HorizontalAlignment="Left" Height="226" Margin="16,14,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="206" Source="D:\google_dw\_00321075-e172-4551-b0c3-11b7b1235345-removebg-preview.png"/>
+            <Button x:Name="Back" Content="Back" HorizontalAlignment="Center" Margin="0,129,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="0.514,1.098" Style="{StaticResource buttonMain}" Width="88" Height="42" Click="Back_Click"/>
+            <TextBox x:Name="TotalPrice" Grid.Column="1" HorizontalAlignment="Left" Margin="877,160,0,0" TextWrapping="Wrap" Text="Total Price" VerticalAlignment="Top" Width="118" Style="{StaticResource textbox}" Height="34" Grid.Row="2"/>
+            <materialDesgin:PackIcon Kind="Receipt" FontSize="50" Grid.Column="1" Margin="827,155,0,0" Height="34" Width="29" Grid.Row="2"/>
+        </Grid>
+    </Border>
+
+</Window>

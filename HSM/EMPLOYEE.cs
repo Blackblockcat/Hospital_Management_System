@@ -14,11 +14,16 @@ namespace HSM
     
     public partial class EMPLOYEE
     {
-        public int ID_Employee { get; set; }
+        public string ID_Employee { get; set; }
         public string employee_name { get; set; }
-        public Nullable<double> Salary { get; set; }
+        public double Salary { get; set; }
         public string Job { get; set; }
         public string Phone { get; set; }
         public string Gender { get; set; }
+        public int Age { get; set; }
+        public string Town { get; set; }
+        public string Address { get; set; }
+        public byte[] Image { get; set; }
+        public string Password { get; set; }
     }
 }

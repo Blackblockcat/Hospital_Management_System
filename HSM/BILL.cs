@@ -19,10 +19,10 @@ namespace HSM
         public Nullable<double> ME_Price { get; set; }
         public Nullable<int> Appointment_id { get; set; }
         public Nullable<double> Appointment_Price { get; set; }
-        public Nullable<int> ID_Patient { get; set; }
-        public Nullable<double> Pay_Method { get; set; }
+        public int ID_Patient { get; set; }
+        public string Pay_Method { get; set; }
+        public bool Payment { get; set; }
     
-        public virtual APPOINTMENT APPOINTMENT { get; set; }
         public virtual PATIENT PATIENT { get; set; }
         public virtual MEDICAL_EXAMINATIONS MEDICAL_EXAMINATIONS { get; set; }
     }

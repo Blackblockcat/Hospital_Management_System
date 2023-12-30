@@ -1,0 +1,94 @@
+﻿<Window x:Class="HSM.Stafflock"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HSM.Control"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:materialDesgin="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" 
+        Title="MainWindow" Height="370" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+
+        </Grid.ColumnDefinitions>
+        <Image Source="D:\google_dw\reject.png" Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imageclose}"/>
+        <Border CornerRadius="10 0 0 10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="red" Offset="0"/>
+                    <GradientStop Color="red" Offset="1"/>
+                </LinearGradientBrush>
+
+            </Border.Background>
+            <Grid>
+                <Canvas/>
+
+
+            </Grid>
+        </Border>
+
+        <Border Background="#ffffff" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown" >
+            <StackPanel >
+                <TextBlock Text="Staff Data" Style="{StaticResource ResourceKey=titleText}" Foreground="Red"/>
+                <TextBlock Text=" Only Manager and Co-Manager are allowed to Access Staff Data" Style="{StaticResource normalText}" Foreground="#878787" Width="476"/>
+                <Border BorderThickness="1" BorderBrush="#abc0af" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Image Source="D:\google_dw\5856-removebg-preview.png" Height="25"/>
+                        <TextBlock x:Name="textManager_CoManager" MouseDown="textManager_CoManager_MouseDown" Text="Manager/CO-Manager Name"  Style="{StaticResource textHint}"/>
+                        <TextBox x:Name="txtManager_CoManager" TextChanged="txtManager_CoManager_TextChanged" Style="{StaticResource textbox}"/>
+
+                    </Grid>
+
+                </Border>
+
+                <Border BorderThickness="1" BorderBrush="#abc0af" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Image Source="C:\Users\Deiaa\Downloads\Compressed\shield.jpg\shield.jpg" Height="25"/>
+
+                        <TextBlock x:Name="textMCPassword" MouseDown="textMCPassword_MouseDown" Text="Manager/CO-Manager Password" Style="{StaticResource textHint}"/>
+                        <PasswordBox x:Name="txtMCPassword" PasswordChanged="txtMCPassword_PasswordChanged" Style="{StaticResource textbox}" />
+
+                    </Grid>
+
+                </Border>
+                <Border BorderThickness="1" BorderBrush="#abc0af" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Image Source="D:\google_dw\depositphotos_660012834-stock-illustration-flat-design-icon-card.jpg" Height="25"/>
+
+                        <TextBlock x:Name="textMCID" MouseDown="textMCID_MouseDown" Text="Manager/CO-Manager ID" Style="{StaticResource textHint}"/>
+                        <TextBox x:Name="txtMCID" TextChanged="txtMCID_TextChanged" Style="{StaticResource textbox}"/>
+
+                    </Grid>
+
+                </Border>
+                <Button x:Name="ToStaff" Content="Submit" Click="ToStaff_Click" Style="{StaticResource mainbutton}" Margin="0 10 0 0"/>
+            </StackPanel>
+        </Border>
+        <Image HorizontalAlignment="Center" Height="232" VerticalAlignment="Center" Width="274" Source="/_00321075-e172-4551-b0c3-11b7b1235345-removebg-preview.png" RenderTransformOrigin="0.672,0.487"/>
+        <fa:FontAwesome Icon="Warning" Margin="50,23,348,297" FontSize="30" Foreground="Red" Grid.Column="1"/>
+    </Grid>
+
+
+</Window>
+

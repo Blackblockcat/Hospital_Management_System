@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HSMBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="APPOINTMENT">
+    <Key>
+      <PropertyRef Name="Appointment_id" />
+    </Key>
+    <Property Name="Appointment_id" Type="Int32" Nullable="false" />
+    <Property Name="ID_Patient" Type="Int32" />
+    <Property Name="ID_Dep" Type="Int32" />
+    <Property Name="app_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK__APPOINTME__ID_De__4AB81AF0" FromRole="APPOINTMENT" ToRole="DEPARTMENT" />
+    <NavigationProperty Name="PATIENT" Relationship="Self.FK__APPOINTME__ID_Pa__49C3F6B7" FromRole="APPOINTMENT" ToRole="PATIENT" />
+    <NavigationProperty Name="BILLs" Relationship="Self.FK__BILL__Appointmen__6383C8BA" FromRole="APPOINTMENT" ToRole="BILL" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILL_ID" />
+    </Key>
+    <Property Name="BILL_ID" Type="Int32" Nullable="false" />
+    <Property Name="ME_ID" Type="Int32" />
+    <Property Name="ME_Price" Type="Double" />
+    <Property Name="Appointment_id" Type="Int32" />
+    <Property Name="Appointment_Price" Type="Double" />
+    <Property Name="ID_Patient" Type="Int32" />
+    <Property Name="Pay_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="APPOINTMENT" Relationship="Self.FK__BILL__Appointmen__6383C8BA" FromRole="BILL" ToRole="APPOINTMENT" />
+    <NavigationProperty Name="PATIENT" Relationship="Self.FK__BILL__ID_Patient__6477ECF3" FromRole="BILL" ToRole="PATIENT" />
+    <NavigationProperty Name="MEDICAL_EXAMINATIONS" Relationship="Self.FK__BILL__ME_ID__628FA481" FromRole="BILL" ToRole="MEDICAL_EXAMINATIONS" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="ID_Dep" />
+    </Key>
+    <Property Name="ID_Dep" Type="Int32" Nullable="false" />
+    <Property Name="NAME_DEP" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Price_Dep" Type="Double" />
+    <Property Name="No_Of_Room" Type="Int32" />
+    <NavigationProperty Name="APPOINTMENTs" Relationship="Self.FK__APPOINTME__ID_De__4AB81AF0" FromRole="DEPARTMENT" ToRole="APPOINTMENT" />
+    <NavigationProperty Name="DOCTORs" Relationship="Self.FK__DOCTOR__ID_Dep__412EB0B6" FromRole="DEPARTMENT" ToRole="DOCTOR" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="ID_Doc" />
+    </Key>
+    <Property Name="ID_Doc" Type="Int32" Nullable="false" />
+    <Property Name="DOC_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Dep" Type="Int32" />
+    <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK__DOCTOR__ID_Dep__412EB0B6" FromRole="DOCTOR" ToRole="DEPARTMENT" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employee_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="Double" />
+    <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAMINATIONS">
+    <Key>
+      <PropertyRef Name="ME_ID" />
+    </Key>
+    <Property Name="ME_ID" Type="Int32" Nullable="false" />
+    <Property Name="MeType" Type="Int32" />
+    <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ME_DATE" Type="DateTime" Precision="0" />
+    <Property Name="ID_Patient" Type="Int32" />
+    <NavigationProperty Name="BILLs" Relationship="Self.FK__BILL__ME_ID__628FA481" FromRole="MEDICAL_EXAMINATIONS" ToRole="BILL" />
+    <NavigationProperty Name="PATIENT" Relationship="Self.FK__MEDICAL_E__ID_Pa__3C69FB99" FromRole="MEDICAL_EXAMINATIONS" ToRole="PATIENT" />
+    <NavigationProperty Name="MEDICAL_EXAMINATIONS_TYPES" Relationship="Self.FK__MEDICAL_E__MeTyp__3B75D760" FromRole="MEDICAL_EXAMINATIONS" ToRole="MEDICAL_EXAMINATIONS_TYPES" />
+  </EntityType>
+  <EntityType Name="MEDICAL_EXAMINATIONS_TYPES">
+    <Key>
+      <PropertyRef Name="MeType_ID" />
+    </Key>
+    <Property Name="MeType_ID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type_Price" Type="Double" />
+    <NavigationProperty Name="MEDICAL_EXAMINATIONS" Relationship="Self.FK__MEDICAL_E__MeTyp__3B75D760" FromRole="MEDICAL_EXAMINATIONS_TYPES" ToRole="MEDICAL_EXAMINATIONS" />
+  </EntityType>
+  <EntityType Name="PATIENT">
+    <Key>
+      <PropertyRef Name="ID_Patient" />
+    </Key>
+    <Property Name="ID_Patient" Type="Int32" Nullable="false" />
+    <Property Name="name_patient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Town" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AddressS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="APPOINTMENTs" Relationship="Self.FK__APPOINTME__ID_Pa__49C3F6B7" FromRole="PATIENT" ToRole="APPOINTMENT" />
+    <NavigationProperty Name="BILLs" Relationship="Self.FK__BILL__ID_Patient__6477ECF3" FromRole="PATIENT" ToRole="BILL" />
+    <NavigationProperty Name="MEDICAL_EXAMINATIONS" Relationship="Self.FK__MEDICAL_E__ID_Pa__3C69FB99" FromRole="PATIENT" ToRole="MEDICAL_EXAMINATIONS" />
+  </EntityType>
+  <EntityType Name="PHARMACY">
+    <Key>
+      <PropertyRef Name="Medicine_Code" />
+    </Key>
+    <Property Name="Medicine_Code" Type="Int32" Nullable="false" />
+    <Property Name="MEDICENE_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" />
+  </EntityType>
+  <Association Name="FK__APPOINTME__ID_De__4AB81AF0">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__APPOINTME__ID_Pa__49C3F6B7">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="APPOINTMENT">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__Appointmen__6383C8BA">
+    <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPOINTMENT">
+        <PropertyRef Name="Appointment_id" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="Appointment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__ID_Patient__6477ECF3">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__ME_ID__628FA481">
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="ME_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="ME_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DOCTOR__ID_Dep__412EB0B6">
+    <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DEPARTMENT">
+        <PropertyRef Name="ID_Dep" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="ID_Dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEDICAL_E__ID_Pa__3C69FB99">
+    <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PATIENT">
+        <PropertyRef Name="ID_Patient" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="ID_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEDICAL_E__MeTyp__3B75D760">
+    <End Role="MEDICAL_EXAMINATIONS_TYPES" Type="Self.MEDICAL_EXAMINATIONS_TYPES" Multiplicity="0..1" />
+    <End Role="MEDICAL_EXAMINATIONS" Type="Self.MEDICAL_EXAMINATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDICAL_EXAMINATIONS_TYPES">
+        <PropertyRef Name="MeType_ID" />
+      </Principal>
+      <Dependent Role="MEDICAL_EXAMINATIONS">
+        <PropertyRef Name="MeType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HSMBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="APPOINTMENTs" EntityType="Self.APPOINTMENT" />
+    <EntitySet Name="BILLs" EntityType="Self.BILL" />
+    <EntitySet Name="DEPARTMENTs" EntityType="Self.DEPARTMENT" />
+    <EntitySet Name="DOCTORs" EntityType="Self.DOCTOR" />
+    <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+    <EntitySet Name="MEDICAL_EXAMINATIONS" EntityType="Self.MEDICAL_EXAMINATIONS" />
+    <EntitySet Name="MEDICAL_EXAMINATIONS_TYPES" EntityType="Self.MEDICAL_EXAMINATIONS_TYPES" />
+    <EntitySet Name="PATIENTs" EntityType="Self.PATIENT" />
+    <EntitySet Name="PHARMACies" EntityType="Self.PHARMACY" />
+    <AssociationSet Name="FK__APPOINTME__ID_De__4AB81AF0" Association="Self.FK__APPOINTME__ID_De__4AB81AF0">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__APPOINTME__ID_Pa__49C3F6B7" Association="Self.FK__APPOINTME__ID_Pa__49C3F6B7">
+      <End Role="PATIENT" EntitySet="PATIENTs" />
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__Appointmen__6383C8BA" Association="Self.FK__BILL__Appointmen__6383C8BA">
+      <End Role="APPOINTMENT" EntitySet="APPOINTMENTs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__ID_Patient__6477ECF3" Association="Self.FK__BILL__ID_Patient__6477ECF3">
+      <End Role="PATIENT" EntitySet="PATIENTs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__ME_ID__628FA481" Association="Self.FK__BILL__ME_ID__628FA481">
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DOCTOR__ID_Dep__412EB0B6" Association="Self.FK__DOCTOR__ID_Dep__412EB0B6">
+      <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+      <End Role="DOCTOR" EntitySet="DOCTORs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEDICAL_E__ID_Pa__3C69FB99" Association="Self.FK__MEDICAL_E__ID_Pa__3C69FB99">
+      <End Role="PATIENT" EntitySet="PATIENTs" />
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEDICAL_E__MeTyp__3B75D760" Association="Self.FK__MEDICAL_E__MeTyp__3B75D760">
+      <End Role="MEDICAL_EXAMINATIONS_TYPES" EntitySet="MEDICAL_EXAMINATIONS_TYPES" />
+      <End Role="MEDICAL_EXAMINATIONS" EntitySet="MEDICAL_EXAMINATIONS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

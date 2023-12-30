@@ -66,7 +66,7 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="C:\Users\Deiaa\Downloads\Compressed\shield.jpg\shield.jpg" Height="25"/>
 
-                        <TextBlock x:Name="textUserID" MouseDown="textUserID_MouseDown" Text="User ID" Style="{StaticResource textHint}"/>
+                        <TextBlock x:Name="textUserID" MouseDown="textUserID_MouseDown" Text="User Password" Style="{StaticResource textHint}"/>
                         <PasswordBox x:Name="txtUserID" PasswordChanged="txtUserID_PasswordChanged" Style="{StaticResource textbox}" />
                     </Grid>
 

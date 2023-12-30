@@ -11,6 +11,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+                
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Thumb}">
@@ -109,6 +110,7 @@
                 <ColumnDefinition Width="351*"/>
             </Grid.ColumnDefinitions>
             <ScrollViewer Margin="33,38,10,0" Grid.ColumnSpan="5">
+                
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="200"/>
@@ -193,34 +195,7 @@
                         </Grid>
                     </Grid>
 
-                    <Grid Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" Width="580" Height="510">
-                        <Grid Background="#3AA9AD" Margin="20,10,20,60">
-                            <Grid.OpacityMask>
-                                <VisualBrush Visual="{ Binding ElementName=BorderG1 }"/>
-                            </Grid.OpacityMask>
-                            <Border x:Name="BorderG1" CornerRadius="5" Background="White" Margin="36,31,10,57"/>
-                            <StackPanel VerticalAlignment="Top" Height="53" Margin="0,352,0,0" >
-                                <StackPanel Orientation="Horizontal" Margin="20 5" Height="42" Width="546"/>
-                                <StackPanel Orientation="Horizontal" Margin="10 5"/>
-                            </StackPanel>
-                        </Grid>
-                        <Grid Margin="50 20 50 150">
-                            <Grid.OpacityMask>
-                                <VisualBrush Visual="{ Binding ElementName=BorderG2 }"/>
-                            </Grid.OpacityMask>
-                            <Border x:Name="BorderG2" CornerRadius="15" Background="#FF002551"/>
-
-                            <MetroChart:RadialGaugeChart Background="{x:Null}" ChartTitle="Cure rate" ChartSubTitle="" Foreground="LightGray" >
-                                <MetroChart:RadialGaugeChart.Series>
-                                    <MetroChart:ChartSeries
-                                        DisplayMember="Titulo"
-                                        ItemsSource="{Binding Path=Consumo}"
-                                        SeriesTitle="Cure rate"
-                                        ValueMember="Porcentagem" HorizontalAlignment="Center"/>
-                                </MetroChart:RadialGaugeChart.Series>
-                            </MetroChart:RadialGaugeChart>
-                        </Grid>
-                    </Grid>
+               
                 </Grid>
             </ScrollViewer>
         </Grid>
@@ -247,28 +222,28 @@
 
 
             <StackPanel Grid.Row="1">
-                <Button  Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" Click="Button_Click_1" >
+                <Button x:Name="appointment"  Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" Click="appointment_Click"   >
                     <Grid Width="150">
                         <materialDesgin:PackIcon Kind="Calendar" VerticalAlignment="Center"/>
                         <TextBlock Text="APPOINTMENTS" FontFamily="Champagne &amp; Limousines" FontWeight="Bold" Height="17" VerticalAlignment="Center" Margin="20,0,21,0"/>
                     </Grid>
                 </Button>
 
-                <Button  Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" Click="Button_Click_2" >
+                <Button x:Name="examination"  Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" Click="examination_Click"  >
                     <Grid Width="150">
                         <materialDesgin:PackIcon Kind="TestTube" VerticalAlignment="Center"/>
                         <TextBlock Text="EXAMINATION" FontFamily="Champagne &amp; Limousines" FontWeight="Bold" Height="17" VerticalAlignment="Center" Margin="26,0,25,0"/>
                     </Grid>
                 </Button>
 
-                <Button Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6">
+                <Button x:Name="pharmacy" Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" Click="pharmacy_Click" >
                     <Grid Width="150">
                         <materialDesgin:PackIcon Kind="Drag" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="PHARMACY" FontFamily="Champagne &amp; Limousines" FontWeight="Bold" Height="17" VerticalAlignment="Top" Margin="0,7,0,0"/>
                     </Grid>
                 </Button>
 
-                <Button     Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" >
+                <Button x:Name="payment"     Margin="10" Background="#3AA9AD" BorderBrush="#4EB1B6" Click="payment_Click" >
                     <Grid Width="150">
                         <materialDesgin:PackIcon Kind="Dollar" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="PAYMENT" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
@@ -277,13 +252,19 @@
 
 
 
-                <Button  Margin="10" Background="#3AA9AD" BorderBrush="#3AA9AD">
+                <Button x:Name="patient"  Margin="10" Background="#3AA9AD" BorderBrush="#3AA9AD" Click="patient_Click" >
+                    <Grid Width="150">
+                        <materialDesgin:PackIcon Kind="Human" VerticalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center" Text="Patients" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
+                    </Grid>
+                </Button>
+                <Button x:Name="staff"  Margin="10" Background="#3AA9AD" BorderBrush="#3AA9AD" Click="staff_Click" >
                     <Grid Width="150">
                         <materialDesgin:PackIcon Kind="Work" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="STAFF" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
                     </Grid>
                 </Button>
-                <Button Background="#3AA9AD" BorderBrush="#4EB1B6" Click="Button_Click" Style="{StaticResource mainbutton}" Width="152" Margin="0 200 ">
+                <Button x:Name="logout" Style="{StaticResource mainbutton}" Width="152" Click="logout_Click">
                     <Grid Width="150">
                         <materialDesgin:PackIcon Kind="Logout" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="LOGOUT" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
@@ -291,7 +272,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-
+        <Image Source=""/>
 
     </Grid>
 </Window>

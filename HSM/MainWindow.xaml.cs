@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,20 +10,19 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using Azure;
 using Microsoft.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace HSM
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
-        SqlConnection con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=HSMBase;Integrated Security=True;Trust Server Certificate=True");
-        
+      
+        HSMEntities db= new HSMEntities();
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
@@ -63,34 +63,37 @@ namespace HSM
         } 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-         
-            SqlDataAdapter adapter=new SqlDataAdapter("select employee_name,ID_Employee from EMPLOYEE where employee_name='" + txtUserName.Text + "'and ID_Employee='" + txtUserID.Password + "'", con);
-            DataTable dataTable = new DataTable();
-             adapter.Fill(dataTable);
-            /*
-             * John Doe #M000
-             * Michael Johnson #CM101
-             * Emma Brown   #R204
-             * Aiden Clark  #R223
-             * Amelia Parker #R245
-             * Noah Martinez #R299
-             * Stella Nelson #R305
-             */
-           
-            if (dataTable.Rows.Count > 0 && ((txtUserName.Text == "John Doe" && txtUserID.Password == "#M000") || (txtUserName.Text == "Michael Johnson" && txtUserID.Password == "#CM101") || (txtUserName.Text == "Emma Brown" && txtUserID.Password == "#R204")
-    || (txtUserName.Text == "Aiden Clark" && txtUserID.Password == "#R223") || (txtUserName.Text == "Amelia Parker" && txtUserID.Password == "#R245")
-    || (txtUserName.Text == "Noah Martinez" && txtUserID.Password == "#R299") || (txtUserName.Text == "Stella Nelson" && txtUserID.Password == "#R305")))
+
+            string userName = txtUserName.Text;
+            string userPassword = txtUserID.Password;
+            SHA256 sHA256 = SHA256.Create();
+            byte[] b=new byte[userPassword.Length];
+            for (int i = 0; i < userPassword.Length; i++)
             {
-                 HomePage p=new HomePage();
-                this.Hide();
-                p.Show();
+                b[i] = (byte)userPassword[i];
+            }
+            var res=sHA256.ComputeHash(b);
+            string passHash = "";
+            for (int i = 0; i < res.Length; i++)
+            {
+                passHash += (char)res[i];
+            }
+       
+            var user = db.EMPLOYEEs.FirstOrDefault(E => E.employee_name.Equals(userName) && E.Password.Equals(passHash));
+            if (user != null)
+            {
                
+                HomePage homePage = new HomePage();
+                this.Hide();
+                homePage.Show();
             }
             else
             {
-
-                MessageBox.Show("!Invaild");
+                MessageBox.Show("Sorry Invalid");
             }
+
+
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
